@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace DirectionsApi.Models
+namespace Utility.CommonModels
 {
-    public class Duration
+   public class TextValuePair
     {
-
         [JsonProperty("text")]
         public string Text { get; set; }
 

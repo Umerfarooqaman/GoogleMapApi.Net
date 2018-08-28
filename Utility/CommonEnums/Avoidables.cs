@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace DirectionsApi.Enums
+namespace Utility.CommonEnums
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Avoidables

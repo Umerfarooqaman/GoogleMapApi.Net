@@ -6,6 +6,7 @@ using System.Text;
 using DirectionsApi.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Utility.CommonEnums;
 
 namespace DirectionsApi.Models
 {
@@ -28,7 +29,7 @@ namespace DirectionsApi.Models
         [JsonProperty("status")]
         public DirectionsStatus Status { get; set; }
 
-        [JsonProperty("error_message ")]
+        [JsonProperty("error_message")]
         public string ErrorMessage { get; set; }
     }
 }

@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
+using Utility.CommonModels;
 
 namespace DirectionsApi.Models
 {
-    public class Time
+    public class Time :TextValuePair
     {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("value")]
-        public int Value { get; set; }
+       
 
         [JsonProperty("time_zone ")]
         public string TimeZone { get; set; }

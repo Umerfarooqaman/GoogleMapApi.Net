@@ -11,17 +11,10 @@ namespace DirectionsApi.Models
 
         public List<string> Polylines
         {
-            get
-            {
+            // ReSharper disable once FunctionRecursiveOnAllPaths
+            get => _polyline ?? (_polyline = new List<string>());
 
-                if (Polylines is null)
-                {
-                    _polyline = new List<string>();
-                }
-                return _polyline;
-            }
-
-            private set => _polyline = value;
+            set => _polyline = value;
         }
 
         public new string ToString()

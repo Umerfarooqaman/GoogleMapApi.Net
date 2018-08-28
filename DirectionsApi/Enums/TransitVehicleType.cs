@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace DirectionsApi.Enums
 {
 
-   public enum TransitVehicleType
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum TransitVehicleType
     {
         RAIL,
         METRO_RAIL,

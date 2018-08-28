@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using DirectionsApi.Models;
+﻿using System.Threading.Tasks;
+using DistanceMatrix.Models;
 
-namespace DirectionsApi
+namespace DistanceMatrix
 {
     public static class DirectionsExtentions
     {
@@ -13,18 +10,18 @@ namespace DirectionsApi
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static DirectionsResponse GetDirections(this DirectionsRequest request)
+        public static DistanceMatrixResponse GetDirections(this DistanceMatrixRequest request)
         {
-           return DirectionsService.GetSingletonInstance().GetDirections(request);
+           return DistanceMatrixService.GetSingletonInstance().GetDirections(request);
         }
         /// <summary>
         /// return asynchronous  DirectionsResponce using Direction service as a singleton 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static Task< DirectionsResponse> GetDirectionsAsync(this DirectionsRequest request)
+        public static Task< DistanceMatrixResponse> GetDirectionsAsync(this DistanceMatrixRequest request)
         {
-            return DirectionsService.GetSingletonInstance().GetDirectionsAsync(request);
+            return DistanceMatrixService.GetSingletonInstance().GetDirectionsAsync(request);
         }
     }
 }

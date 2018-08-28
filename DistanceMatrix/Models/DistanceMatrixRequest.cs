@@ -2,52 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DirectionsApi.Enums;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Utility.CommonEnums;
 using Utility.CommonModels;
-using Avoidables = Utility.CommonEnums.Avoidables;
 
-namespace DirectionsApi.Models
+namespace DistanceMatrix.Models
 {
-    public class DirectionsRequest
+    public class DistanceMatrixRequest
     {
+       
 
-        public LocationParameter Origin { get; set; }
-
-        public LocationParameter Destination { get; set; }
-
-        public string Key { get; set; }
+        public List<LocationParameter> Origins;
+        public List<LocationParameter> Destinations;
 
 
+        
         public TravelModes? TravelMode { get; set; }
 
-        public List<WayPointParameter> WayPoints { get; set; }
-
-
-        public bool Alternatives { get; set; } = false;
-
-
-        public List<Avoidables> Avoid { get; set; }
-
-
+        /// <summary>
+        /// <returns></returns>
+        /// </summary>
         public string Language { get; set; }
 
 
-        public UnitSystem Units { get; set; }
-
         public string Region { get; set; }
+        
+        public List<Avoidables> Avoid { get; set; }
+
+        
+        public UnitSystem? Units { get; set; }
+
 
         public DateTime? ArrivalTime { get; set; }
 
         public DateTime? DepartureTime { get; set; }
 
+        
         public TrafficModel? TrafficModel { get; set; }
 
+        
         public List<TransitMode> TransitMode { get; set; }
 
-        public List<TransitRoutingPreference> TransitRoutingPreferences { get; set; }
+        
+        public TransitRoutingPreference? TransitRoutingPreference { get; set; }
+
 
 
         public override string ToString()
@@ -55,20 +52,18 @@ namespace DirectionsApi.Models
             Dictionary<string, string> parameters = new Dictionary<string, string>();
 
             //adding required parrameters
-            if (Origin != null) parameters.Add("origin", Origin.ToString());
+            if (Origins != null) parameters.Add("origins", string.Join("|", Origins.Select(d=>d.ToString())));
 
-            if (Destination != null) parameters.Add("destination", value: Destination.ToString());
+            if (Destinations != null) parameters.Add("destinations", string.Join("|", Destinations.Select(d => d.ToString())));
 
-          if(!string.IsNullOrEmpty(Key))  parameters.Add("key", Key);
+            if (!string.IsNullOrEmpty(Key)) parameters.Add("key", Key);
 
 
             //adding optional parametres
             if (TravelMode != null) parameters.Add("mode", TravelMode.Value.ToString());
 
-            if (WayPoints != null && WayPoints.Count > 0) parameters.Add("waypoints", string.Join("|", WayPoints.Distinct().Select(d => d.ToString())));
-
-            if (Alternatives) parameters.Add("alternatives", Alternatives.ToString());
-
+          
+          
             if (Avoid != null) parameters.Add("avoid", string.Join("|", Avoid.Distinct().Select(d => d.ToString())));
 
             if (string.IsNullOrEmpty(Language)) parameters.Add("language", Language);
@@ -94,10 +89,14 @@ namespace DirectionsApi.Models
             if (TransitMode != null)
                 parameters.Add("transit_mode", string.Join("|", TransitMode.Distinct().Select(d => d.ToString())));
 
-            if (TransitRoutingPreferences != null)
-                parameters.Add("transit_routing_preference", TransitRoutingPreferences.ToString());
+            if (TransitRoutingPreference != null)
+                parameters.Add("transit_routing_preference", TransitRoutingPreference.ToString());
 
             return string.Join("&", parameters.Select(d => d.Key + "=" + d.Value));
         }
+
+        public string Key { get; set; }
+
+       
     }
 }
