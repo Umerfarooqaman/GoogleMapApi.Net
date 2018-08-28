@@ -7,7 +7,7 @@ namespace DistanceMatrix
     {
         string Key { set; }
 
-        DistanceMatrixResponse GetDirections(DistanceMatrixRequest request);
-        Task<DistanceMatrixResponse> GetDirectionsAsync(DistanceMatrixRequest request);
+        DistanceMatrixResponse GetDistanceMatrix(DistanceMatrixRequest request);
+        Task<DistanceMatrixResponse> GetDistanceMatrixAsync(DistanceMatrixRequest request);
     }
 }

@@ -19,7 +19,7 @@ namespace DistanceMatrix
             set => _key = value;
         }
 
-        public  Task< DistanceMatrixResponse> GetDirectionsAsync(DistanceMatrixRequest request)
+        public  Task< DistanceMatrixResponse> GetDistanceMatrixAsync(DistanceMatrixRequest request)
         {
             if (string.IsNullOrEmpty(request.Key))
             {
@@ -43,9 +43,9 @@ namespace DistanceMatrix
 
         }
 
-        public DistanceMatrixResponse GetDirections(DistanceMatrixRequest request)
+        public DistanceMatrixResponse GetDistanceMatrix(DistanceMatrixRequest request)
         {
-          return  GetDirectionsAsync(request).Result;
+          return GetDistanceMatrixAsync(request).Result;
         }
 
 
