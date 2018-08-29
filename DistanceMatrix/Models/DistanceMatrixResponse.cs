@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using DistanceMatrix.Enums;
 using Newtonsoft.Json;
@@ -24,5 +25,8 @@ namespace DistanceMatrix.Models
         public string ErrorMessage { get; set; }
 
         public bool Successfull { get; set; } = true;
+
+        [IgnoreDataMember]
+        public  List< DistanceMatrixLookup> LookUp { get; set; }=new List<DistanceMatrixLookup>();
     }
 }

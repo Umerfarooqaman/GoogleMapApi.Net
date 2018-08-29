@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace DistanceMatrix.Models
@@ -7,5 +8,7 @@ namespace DistanceMatrix.Models
     {
         [JsonProperty("elements")]
         public List<MatrixElement> Elements { get; set; }
+
+        public String OriginAddress { get; set; }
     }
 }
