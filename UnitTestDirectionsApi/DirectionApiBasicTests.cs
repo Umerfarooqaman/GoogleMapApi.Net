@@ -1,7 +1,8 @@
-using DirectionsApi.Models;
 using  DirectionsApi;
+using GoogleMapServices.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Utility.CommonModels;
+
+using DirectionsRequest = DirectionsApi.Models.DirectionsRequest;
 
 namespace UnitTestDirectionsApi
 {

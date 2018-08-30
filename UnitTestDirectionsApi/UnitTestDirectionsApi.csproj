@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DirectionsApi\DirectionsApi.csproj" />
+    <ProjectReference Include="..\GoogleMapServices\GoogleMapServices.csproj" />
   </ItemGroup>
 
 </Project>
