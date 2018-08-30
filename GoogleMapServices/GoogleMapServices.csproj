@@ -3,6 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/Umerfarooqaman/GoogleMapApi.Net</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/Umerfarooqaman/GoogleMapApi.Net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>A google map api wrapper for .Net . You can use Directions and Distance Matrix Api using this package</Description>
+    <PackageTags>google map api direction directions matrix distance distancematrix</PackageTags>
+    <Authors>Umer Farooq</Authors>
   </PropertyGroup>
 
   <ItemGroup>
