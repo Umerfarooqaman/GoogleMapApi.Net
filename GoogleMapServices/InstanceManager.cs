@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace GoogleMapServices
 {
@@ -10,6 +12,19 @@ namespace GoogleMapServices
         public static T GetInstance()
         {
             return (T)Activator.CreateInstance(typeof(T)); ;
+        }
+
+        public static Dictionary<string, T> SharedPool
+        {
+            set
+            {
+                var pool = typeof(InstanceManager<T>).GetTypeInfo().DeclaredFields
+                    .First(field => field.Name == "Pool");
+                pool.SetValue(null, value);
+
+
+
+            }
         }
 
         public static T GetScopedInstance(string scope)
