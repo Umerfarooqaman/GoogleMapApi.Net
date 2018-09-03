@@ -5,7 +5,7 @@ namespace GoogleMapServices
 {
     public class InstanceManager<T>
     {
-        private static readonly Dictionary<string, T> Pool = new Dictionary<string, T>();
+        public static readonly Dictionary<string, T> Pool = new Dictionary<string, T>();
 
         public static T GetInstance()
         {
