@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using GoogleMapServices.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+
  
  
 using Avoidables = GoogleMapServices.Enums.Avoidables;
@@ -13,7 +16,8 @@ namespace GoogleMapServices.Models
 {
     public class DirectionsRequest
     {
-
+        private string ArrivalTime;
+        private string DepartureTime;
         public LocationParameter Origin { get; set; }
 
         public LocationParameter Destination { get; set; }
@@ -39,9 +43,19 @@ namespace GoogleMapServices.Models
 
         public string Region { get; set; }
 
-        public DateTime? ArrivalTime { get; set; }
+        [JsonIgnore]
+        public DateTime? _ArrivalTime
+        {
+            get { return ArrivalTime.ParseFromWeb() ;}
+            set { ArrivalTime = value.FormatAsWeb(); }
+        }
 
-        public DateTime? DepartureTime { get; set; }
+        [JsonIgnore]
+        public DateTime? _DepartureTime
+        {
+            get { return DepartureTime.ParseFromWeb(); }
+            set { DepartureTime = value.FormatAsWeb(); }
+        }
 
         public TrafficModel? TrafficModel { get; set; }
 
@@ -71,22 +85,23 @@ namespace GoogleMapServices.Models
 
             if (Avoid != null) parameters.Add("avoid", string.Join("|", Avoid.Distinct().Select(d => d.ToString())));
 
-            if (string.IsNullOrEmpty(Language)) parameters.Add("language", Language);
+            if (!string.IsNullOrEmpty(Language)) parameters.Add("language", Language);
 
             if (Units is UnitSystem.imperial) parameters.Add("units", Units.ToString());
 
-            if (string.IsNullOrEmpty(Region)) parameters.Add("region", Region);
+            if (!string.IsNullOrEmpty(Region)) parameters.Add("region", Region);
 
-            if (ArrivalTime != null)
+            if (!string.IsNullOrEmpty(ArrivalTime))
                 parameters.Add("arrival_time",
-                    ArrivalTime - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) != null
-                        ? (ArrivalTime.Value - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Seconds.ToString()
+                    _ArrivalTime - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) != null
+                        ? Math.Floor((_ArrivalTime.Value.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds).ToString(CultureInfo.InvariantCulture)
                         : null);
 
-            if (DepartureTime != null)
+            if (!string.IsNullOrEmpty(DepartureTime))
                 parameters.Add("departure_time",
-                    DepartureTime - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) != null
-                        ? (DepartureTime.Value - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Seconds.ToString()
+                    _DepartureTime  != null
+                        ?Math.Floor( (_DepartureTime.Value.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc))
+                        .TotalSeconds).ToString(CultureInfo.InvariantCulture)
                         : null);
 
             if (TrafficModel != null) parameters.Add("traffic_model", TrafficModel.ToString());

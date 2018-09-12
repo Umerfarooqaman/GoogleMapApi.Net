@@ -23,33 +23,34 @@ namespace GoogleMapServices
         }
 
         /// <inheritdoc />
-        public Task< DirectionsResponse> GetDirectionsAsync(DirectionsRequest request)
+        public async Task< DirectionsResponse> GetDirectionsAsync(DirectionsRequest request)
         {
-            if (string.IsNullOrEmpty(request.Key))
-            {
-                request.Key = !string.IsNullOrEmpty(_key) ? _key :GoogleMapCredentials.Key;
-            }
-            Task<HttpResponseMessage> resp = _client.GetAsync(baseUrl + request.ToString());
-            if (resp.Result.IsSuccessStatusCode)
-            {
-                string data =  resp.Result.Content.ReadAsStringAsync().Result;
-
-               return Task.FromResult(DeserializeObject<DirectionsResponse>(data)) ;
-
-            }
-            else
-            {
-                var directionsResponse = new DirectionsResponse {Successfull = false};
-                directionsResponse.Status = DirectionsStatus.UNKNOWN_ERROR;
-                return Task.FromResult(directionsResponse);
-            }
+            return GetDirections(request);
 
 
         }
         /// <inheritdoc />
         public DirectionsResponse GetDirections(DirectionsRequest request)
         {
-          return  GetDirectionsAsync(request).Result;
+
+            if (string.IsNullOrEmpty(request.Key))
+            {
+                request.Key = !string.IsNullOrEmpty(_key) ? _key : GoogleMapCredentials.Key;
+            }
+            Task<HttpResponseMessage> resp = _client.GetAsync(baseUrl + request.ToString());
+            if (resp.Result.IsSuccessStatusCode)
+            {
+                string data = resp.Result.Content.ReadAsStringAsync().Result;
+
+                return DeserializeObject<DirectionsResponse>(data);
+
+            }
+            else
+            {
+                var directionsResponse = new DirectionsResponse { Successfull = false };
+                directionsResponse.Status = DirectionsStatus.UNKNOWN_ERROR;
+                return directionsResponse;
+            }
         }
 
 

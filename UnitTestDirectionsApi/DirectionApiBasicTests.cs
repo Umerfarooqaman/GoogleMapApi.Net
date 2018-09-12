@@ -31,7 +31,7 @@ namespace UnitTestDirectionsApi
                         Latitude = 40.6860,
                         Longitude = -73.9450
                     }
-                }
+                },_DepartureTime = DateTime.Now+TimeSpan.FromDays(10)
             }.GetDirections();
             Assert.IsTrue(directionsResponse.Successfull);
         }
@@ -45,7 +45,8 @@ namespace UnitTestDirectionsApi
                 Origin = new LocationParameter()
                 { LatLongPair = new LatLongPair() { Latitude = 47.28154, Longitude = -122.56069 } },
                 Destination = new LocationParameter()
-                { LatLongPair = new LatLongPair() { Latitude = 47.27798, Longitude = -122.56082 } }
+                { LatLongPair = new LatLongPair() { Latitude = 47.27798, Longitude = -122.56082 } },
+                _ArrivalTime = DateTime.Now+TimeSpan.FromDays(2)
             }.GetDirections();
             Assert.IsTrue(directionsResponse.Successfull);
         }
