@@ -31,6 +31,6 @@ namespace GoogleMapServices.Enums
         natural_feature,
         airport,
         park,
-        point_of_interest
+        point_of_interest, establishment
     }
 }
