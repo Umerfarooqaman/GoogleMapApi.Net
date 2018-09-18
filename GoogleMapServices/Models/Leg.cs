@@ -22,13 +22,13 @@ namespace GoogleMapServices.Models
         public string EndAddress { get; set; }
 
         [JsonProperty("end_location")]
-        public Coordinates EndLocation { get; set; }
+        public NamedLatLongPair EndLocation { get; set; }
 
         [JsonProperty("start_address")]
         public string StartAddress { get; set; }
 
         [JsonProperty("start_location")]
-        public Coordinates StartLocation { get; set; }
+        public NamedLatLongPair StartLocation { get; set; }
 
         [JsonProperty("steps")]
         public IList<Step> Steps { get; set; }

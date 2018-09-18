@@ -9,7 +9,7 @@ namespace GoogleMapServices.Models
     {
 
         [JsonProperty("bounds")]
-        public Coordinates Bounds { get; set; }
+        public NamedLatLongPair Bounds { get; set; }
 
         [JsonProperty("copyrights")]
         public string Copyrights { get; set; }

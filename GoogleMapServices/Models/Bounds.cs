@@ -9,9 +9,9 @@ namespace GoogleMapServices.Models
     {
 
         [JsonProperty("northeast")]
-        public Coordinates Northeast { get; set; }
+        public NamedLatLongPair Northeast { get; set; }
 
         [JsonProperty("southwest")]
-        public Coordinates Southwest { get; set; }
+        public NamedLatLongPair Southwest { get; set; }
     }
 }

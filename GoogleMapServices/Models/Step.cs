@@ -15,7 +15,7 @@ namespace GoogleMapServices.Models
         public Duration Duration { get; set; }
 
         [JsonProperty("end_location")]
-        public Coordinates EndLocation { get; set; }
+        public NamedLatLongPair EndLocation { get; set; }
 
         [JsonProperty("html_instructions")]
         public string HtmlInstructions { get; set; }
@@ -24,7 +24,7 @@ namespace GoogleMapServices.Models
         public Polyline Polyline { get; set; }
 
         [JsonProperty("start_location")]
-        public Coordinates StartLocation { get; set; }
+        public NamedLatLongPair StartLocation { get; set; }
 
         [JsonProperty("travel_mode")]
         public string TravelMode { get; set; }

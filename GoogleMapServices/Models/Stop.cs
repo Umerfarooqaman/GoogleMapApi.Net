@@ -11,7 +11,7 @@ namespace GoogleMapServices.Models
         public string Name { get; set; }
 
         [JsonProperty("location")]
-        public Coordinates Location { get; set; }
+        public NamedLatLongPair Location { get; set; }
     }
 
 }

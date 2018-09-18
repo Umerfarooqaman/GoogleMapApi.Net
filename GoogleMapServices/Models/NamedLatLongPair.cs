@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace GoogleMapServices.Models
 {
-    public class Coordinates : LatLongPair
+    public class NamedLatLongPair : LatLongPair
     {
 
         [JsonProperty("lat")]
