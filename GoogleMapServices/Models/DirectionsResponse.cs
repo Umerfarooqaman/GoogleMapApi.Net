@@ -26,7 +26,7 @@ namespace GoogleMapServices.Models
         [JsonProperty("routes")]
         public IList<Route> Routes { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        
         [JsonProperty("status")]
         public DirectionsStatus Status { get; set; }
 

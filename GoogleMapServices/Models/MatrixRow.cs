@@ -9,6 +9,6 @@ namespace GoogleMapServices.Models
         [JsonProperty("elements")]
         public List<MatrixElement> Elements { get; set; }
 
-        public String OriginAddress { get; set; }
+        public string OriginAddress { get; set; }
     }
 }

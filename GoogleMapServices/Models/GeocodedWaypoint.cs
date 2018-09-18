@@ -20,7 +20,7 @@ namespace GoogleMapServices.Models
 
         
         [JsonProperty("types")]
-        public IList<AddressTypes> Types { get; set; }
+        public IList<string> Types { get; set; }
 
         [JsonProperty("partial_match")]
         public bool PartialMatch { get; set; }
