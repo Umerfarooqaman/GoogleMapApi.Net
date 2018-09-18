@@ -9,7 +9,7 @@
     <Description>A google map api wrapper for .Net . You can use Directions and Distance Matrix Api using this package</Description>
     <PackageTags>google map api direction directions matrix distance distancematrix</PackageTags>
     <Authors>Umer Farooq</Authors>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
